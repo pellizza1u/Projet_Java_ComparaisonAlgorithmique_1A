@@ -22,15 +22,21 @@ public class GrapheListe implements Graphe {
                 existArv = true;
             }
         }
-        if (existDep && existArv) {
-            for (int j = 0; j < ensNoeuds.size(); j++) {
-                if (ensNoeuds.get(j).getNom().equals(depart)) {
-                    noeudDep = ensNoeuds.get(j);
-                    break;
-                }
-            }
-            noeudDep.ajouterArc(destination, cout);
+        if (!existDep){
+            ensNom.add(depart);
+            ensNoeuds.add(new Noeud(depart));
         }
+        if (!existArv){
+            ensNom.add(destination);
+            ensNoeuds.add(new Noeud(destination));
+        }
+        for (int j = 0; j < ensNoeuds.size(); j++) {
+            if (ensNoeuds.get(j).getNom().equals(depart)) {
+                noeudDep = ensNoeuds.get(j);
+                break;
+            }
+        }
+        noeudDep.ajouterArc(destination, cout);
     }
 
     @Override
@@ -53,7 +59,7 @@ public class GrapheListe implements Graphe {
         }
     }
 
-    @Override
+
     public String toString() {
         String res ="";
         for(int i=0;i<ensNoeuds.size();i++){
