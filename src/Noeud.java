@@ -18,6 +18,7 @@ public class Noeud{
     public void ajouterArc(String destination, double cout){
         this.adj.add(new Arc(destination,cout));
     }
+
     public String getNom(){
         return nom;
     }
@@ -33,4 +34,8 @@ public class Noeud{
         }
         return res;
     }
+    public List<Arc> getListArc() {
+        return adj;
+    }
+
 }

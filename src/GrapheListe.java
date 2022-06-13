@@ -45,22 +45,22 @@ public class GrapheListe implements Graphe {
                 existArv = true;
             }
         }
-        if (!existDep){
+        if(!existDep) {
             ensNom.add(depart);
             ensNoeuds.add(new Noeud(depart));
         }
-        if (!existArv){
+        if(!existArv) {
             ensNom.add(destination);
             ensNoeuds.add(new Noeud(destination));
         }
-        for (int j = 0; j < ensNoeuds.size(); j++) {
-            if (ensNoeuds.get(j).getNom().equals(depart)) {
-                noeudDep = ensNoeuds.get(j);
-                break;
+            for (int j = 0; j < ensNoeuds.size(); j++) {
+                if (ensNoeuds.get(j).getNom().equals(depart)) {
+                    noeudDep = ensNoeuds.get(j);
+                    break;
+                }
             }
+            noeudDep.ajouterArc(destination, cout);
         }
-        noeudDep.ajouterArc(destination, cout);
-    }
 
     @Override
     public List<String> listeNoeuds() {
@@ -81,7 +81,7 @@ public class GrapheListe implements Graphe {
             return null;
         }
     }
-
+    @Override
     public String toString() {
         String res ="";
         for(int i=0;i<ensNoeuds.size();i++){
@@ -105,5 +105,4 @@ public class GrapheListe implements Graphe {
 
     public List<Noeud> getEnsNoeuds() {return ensNoeuds;}
 
-    public List<String> getEnsNom() {return ensNom;}
 }
