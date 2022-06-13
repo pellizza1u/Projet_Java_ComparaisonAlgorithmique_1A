@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class TestGraphe {
 
     @Test
-    public void test_Graphe() throws IOException{
+    public void test_Graphe(){
         //preparation des données
         GrapheListe graphe = new GrapheListe();
         graphe.ajouterArc("A","B",12);
@@ -20,7 +20,7 @@ public class TestGraphe {
 
         //verification
         assertEquals(5,graphe.getEnsNoeuds().size());
-        assertEquals(5,graphe.getEnsNom().size());
+        assertEquals(5,graphe.listeNoeuds().size());
 
         int nbArc=0;
         for(int i=0;i<graphe.getEnsNoeuds().size();i++){

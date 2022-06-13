@@ -1,6 +1,6 @@
 public class BellmanFord {
-    Graphe g;
-    String depart;
+
+    public BellmanFord(){}
 
     public Valeur resoudre(GrapheListe g, String depart){
         Valeur v=  new Valeur();

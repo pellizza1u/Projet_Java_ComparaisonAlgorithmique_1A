@@ -26,6 +26,21 @@ public class Valeur {
         this.parent = new TreeMap<>();
     }
 
+    public List<String> calculerChemin(String destination){
+        List<String> res = new ArrayList<>();
+        List<String> reverse = new ArrayList<>();
+        String prec=getParent(destination);
+        reverse.add(destination);
+        while(prec!=null){
+            reverse.add(prec);
+            prec=getParent(prec);
+        }
+        for (int i=0;i<reverse.size();i++){
+            res.add(reverse.get(reverse.size()-1-i));
+        }
+        return res;
+    }
+
     /**
      * permet d'associer une valeur a un nom de noeud (ici L(X))
      *
