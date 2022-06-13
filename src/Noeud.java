@@ -34,8 +34,4 @@ public class Noeud{
         }
         return res;
     }
-    public List<Arc> getListArc() {
-        return adj;
-    }
-
 }
