@@ -37,11 +37,16 @@ public class Dijkstra {
             }
             //Pour chaque sommet node de NodeList tel que l’arc (ActualNode,node) existe faire
             for (String s : NodeList) {
-                for (int k = 0; k < g.suivants(s).size(); k++) {
-                    double sum = v.getValeur(ActualNode) + g.suivants(ActualNode).get(k).getCout();
-                    if (sum < v.getValeur(s)) {
-                        v.setValeur(s, sum);
-                        v.setParent(s, ActualNode);
+                for (int k = 0; k < g.suivants(ActualNode).size(); k++) {
+                    boolean exist = false;
+                    if (s.equals(g.suivants(ActualNode).get(k).getDest()))
+                        exist = true;
+                    if (exist) {
+                        double sum = v.getValeur(ActualNode) + g.suivants(ActualNode).get(k).getCout();
+                        if (sum < v.getValeur(s)) {
+                            v.setValeur(s, sum);
+                            v.setParent(s, ActualNode);
+                        }
                     }
                 }
             }
