@@ -4,7 +4,7 @@ import java.util.List;
 public class MainBellmanFord {
 
     public static void main(String[] args) throws IOException {
-        GrapheListe graphe = new GrapheListe("graphes/Graphe505.txt");
+        GrapheListe graphe = new GrapheListe("graphes/Graphe905.txt");
         BellmanFord algo= new BellmanFord();
         long start1 = System.currentTimeMillis();
         System.out.println(algo.resoudre(graphe,"1"));

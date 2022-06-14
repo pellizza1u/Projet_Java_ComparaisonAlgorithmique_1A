@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class GrapheListe implements Graphe {
     private List<String> ensNom;
@@ -104,5 +105,19 @@ public class GrapheListe implements Graphe {
     }
 
     public List<Noeud> getEnsNoeuds() {return ensNoeuds;}
+
+    public void etendre (int nb_sommetEnplus ){
+        Random r = new Random();
+        List<Noeud>  lesNoeuds = ensNoeuds;
+        for(int i = 0; i<nb_sommetEnplus; i++){
+            int nb_rep = r.nextInt(4);
+            if(nb_rep == 0){
+                nb_rep=1;
+            }
+            for (int j = 0; j<nb_rep; j ++) {
+                ajouterArc(String.valueOf(i), lesNoeuds.get(r.nextInt(lesNoeuds.size())).getNom(), r.nextInt(100));
+            }
+        }
+    }
 
 }
