@@ -25,24 +25,23 @@ public class Dijkstra {
         while (!NodeList.isEmpty()) {
             //ActualNode <- un sommet de NodeList telle que ActualNode.distance est minimale
             String ActualNode = NodeList.get(0);
-            int index = 0;
-            for (int i = 0; i < NodeList.size(); i++) {
-                if (v.getValeur(NodeList.get(i)) < v.getValeur(ActualNode)) {
-                    ActualNode = NodeList.get(i);
-                    index = i;
+            for (String value : NodeList) {
+                if (v.getValeur(value) < v.getValeur(ActualNode)) {
+                    ActualNode = value;
                 }
             }
             // enlever le sommet ActualNode de la liste NodeList
-            NodeList.remove(NodeList.get(index));
+            NodeList.remove(ActualNode);
             //Pour chaque sommet node de NodeList tel que l’arc (ActualNode,node) existe faire
+            List<Arc> arcListActualNode = g.suivants(ActualNode);
             for (String s : NodeList) {
-                for (int k = 0; k < g.suivants(ActualNode).size(); k++) {
+                for (Arc arc : arcListActualNode) {
                     boolean exist = false;
-                    if (s.equals(g.suivants(ActualNode).get(k).getDest()))
+                    if (s.equals(arc.getDest()))
                         exist = true;
 
                     if (exist) {
-                        double sum = v.getValeur(ActualNode) + g.suivants(ActualNode).get(k).getCout();
+                        double sum = v.getValeur(ActualNode) + arc.getCout();
                         if (sum < v.getValeur(s)) {
                             v.setValeur(s, sum);
                             v.setParent(s, ActualNode);
