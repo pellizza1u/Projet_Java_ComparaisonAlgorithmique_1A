@@ -6,6 +6,7 @@ public class Dijkstra {
     public Dijkstra() {
     }
 
+
     public Valeur resoudre(GrapheListe g, String depart) {
         Valeur v = new Valeur();
         //NodeList <- {} // utilisation d’une liste de noeuds a traiter
