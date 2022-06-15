@@ -100,6 +100,7 @@ public class GrapheListe implements Graphe {
         ajouterArc(dep, arrivee,r.nextInt(1,100));
     }
 
+
     public void ajouterArc(String depart, String destination, double cout) {
         boolean existDep = false;
         boolean existArv = false;
