@@ -11,46 +11,43 @@ public class Dijkstra {
         //NodeList <- {} // utilisation d’une liste de noeuds a traiter
         List<String> NodeList = new ArrayList<>();
         //Pour chaque sommet node de g faire
-        for (String node : g.listeNoeuds()) {
+        for (Noeud node : ((GrapheListe) g).getEnsNoeuds()) {
             //node.distance <- Infini
-            v.setValeur(node, Double.MAX_VALUE);
+            v.setValeur(node.getNom(), Double.MAX_VALUE);
             //node.parent <- Indefini
-            v.setParent(node, null);
+            v.setParent(node.getNom(), null);
             // ajout du sommet v a la liste NodeList
-            NodeList.add(node);
+            NodeList.add(node.getNom());
         }
         //depart.distance <- 0
         v.setValeur(depart, 0);
         //Tant que NodeList est un ensemble non vide faire
-        while (!NodeList.isEmpty()) {
+        while(NodeList.size()>0) {
             //ActualNode <- un sommet de NodeList telle que ActualNode.distance est minimale
-            String ActualNode = NodeList.get(0);
-            for (String value : NodeList) {
-                if (v.getValeur(value) < v.getValeur(ActualNode)) {
-                    ActualNode = value;
-                }
-            }
+            String ActualNode = minimum(NodeList, v);
             // enlever le sommet ActualNode de la liste NodeList
             NodeList.remove(ActualNode);
             //Pour chaque sommet node de NodeList tel que l’arc (ActualNode,node) existe faire
-            List<Arc> arcListActualNode = g.suivants(ActualNode);
-            for (String s : NodeList) {
-                for (Arc arc : arcListActualNode) {
-                    boolean exist = false;
-                    if (s.equals(arc.getDest()))
-                        exist = true;
-
-                    if (exist) {
-                        double sum = v.getValeur(ActualNode) + arc.getCout();
-                        if (sum < v.getValeur(s)) {
-                            v.setValeur(s, sum);
-                            v.setParent(s, ActualNode);
-                        }
+            for (Arc arc : g.suivants(ActualNode)) {
+                if(NodeList.contains(arc.getDest())){
+                    double vall= v.getValeur(ActualNode)+arc.getCout();
+                    if(vall<v.getValeur(arc.getDest())){
+                        v.setValeur(arc.getDest(),vall);
+                        v.setParent(arc.getDest(),ActualNode);
                     }
                 }
             }
         }
         return v;
+    }
+    public String minimum(List<String> liste, Valeur v){
+        String mini= liste.get(0);
+        for(int i=1;i< liste.size();i++){
+            if(v.getValeur(liste.get(i))<v.getValeur(mini)){
+                mini= liste.get(i);
+            }
+        }
+        return mini;
     }
 }
 
