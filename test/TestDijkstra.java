@@ -5,7 +5,7 @@ import java.io.IOException;
 public class TestDijkstra {
 
     @Test
-    public void test_DijKstra() throws IOException {
+    public void test_Dijkstra() throws IOException {
         //TODO
     }
 }
