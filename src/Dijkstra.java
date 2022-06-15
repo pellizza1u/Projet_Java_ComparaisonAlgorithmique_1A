@@ -31,9 +31,9 @@ public class Dijkstra {
             //Pour chaque sommet node de NodeList tel que l’arc (ActualNode,node) existe faire
             for (Arc arc : g.suivants(ActualNode)) {
                 if(NodeList.contains(arc.getDest())){
-                    double vall= v.getValeur(ActualNode)+arc.getCout();
-                    if(vall<v.getValeur(arc.getDest())){
-                        v.setValeur(arc.getDest(),vall);
+                    double val= v.getValeur(ActualNode)+arc.getCout();
+                    if(val<v.getValeur(arc.getDest())){
+                        v.setValeur(arc.getDest(),val);
                         v.setParent(arc.getDest(),ActualNode);
                     }
                 }
