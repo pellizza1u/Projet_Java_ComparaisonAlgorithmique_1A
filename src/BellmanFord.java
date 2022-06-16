@@ -1,7 +1,22 @@
+
+/**
+ * Classe crée qui permet d'implémenter l'algorithme de Bellman-Ford
+ */
 public class BellmanFord {
 
-    public BellmanFord(){}
+    /**
+     * Constructeur vide
+     */
+    public BellmanFord(){
+    }
 
+    /**
+     * methode qui permet de résoudre le plus court chemin par Bellman-Ford
+     * à partir d'un graphe et d'un noeud de depart
+     * @param g
+     * @param depart
+     * @return Valeur
+     */
     public Valeur resoudre(GrapheListe g, String depart){
         Valeur v=  new Valeur();
         for(String i : g.listeNoeuds()){

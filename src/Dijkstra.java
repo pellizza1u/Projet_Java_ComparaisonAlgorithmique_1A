@@ -1,12 +1,22 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe crée qui permet d'implémenter l'algorithme de Dijkstra
+ */
 public class Dijkstra {
-
+    /**
+     * Constructeur vide
+     */
     public Dijkstra() {
     }
 
-
+    /**
+     * methode qui permet de résoudre le meilleur chemin par Dijkstra
+     * @param g
+     * @param depart
+     * @return Valeur
+     */
     public Valeur resoudre(GrapheListe g, String depart) {
         Valeur v = new Valeur();
         //NodeList <- {} // utilisation d’une liste de noeuds a traiter
@@ -41,6 +51,13 @@ public class Dijkstra {
         }
         return v;
     }
+
+    /**
+     * methode qui permet de trouver la distance minimale du graphe vers un sommet
+     * @param liste
+     * @param v
+     * @return String
+     */
     public String minimum(List<String> liste, Valeur v){
         String mini= liste.get(0);
         for(int i=1;i< liste.size();i++){

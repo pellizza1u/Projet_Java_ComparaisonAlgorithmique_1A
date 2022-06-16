@@ -1,20 +1,36 @@
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Classe crée pour représenter les données d'un graphe
+ * implémente l'interface Graphe
+ */
 public class GrapheListe implements Graphe {
-    private List<String> ensNom;
-    private List<Noeud> ensNoeuds;
+    /**
+     * Initialisation d'attributs
+     * une liste de String qui stock les noms des objets noeuds
+     * une liste de noeud qui stock les arcs
+     */
+    private final List<String> ensNom;
+    private final List<Noeud> ensNoeuds;
 
+    /**
+     * Constructeur vide
+     */
     public GrapheListe(){
         ensNom=new ArrayList<>();
         ensNoeuds=new ArrayList<>();
     }
 
+    /**
+     * Constructeur qui crée un graphe à partir d'un nom de fichier
+     * @param nomdufichier
+     * @throws IOException
+     */
     public GrapheListe(String nomdufichier) throws IOException {
         ensNom=new ArrayList<>();
         ensNoeuds=new ArrayList<>();
@@ -34,6 +50,13 @@ public class GrapheListe implements Graphe {
         bfRead.close();
     }
 
+    /**
+     * Constructeur qui permet de générer un graphe automatiquement
+     * à partir d'une taille, noeud de départ, noeud d'arrivée
+     * @param taille
+     * @param depart
+     * @param arrivee
+     */
     public GrapheListe(int taille, String depart, String arrivee){
         Random r = new Random();
         this.ensNom=new ArrayList<>();
@@ -66,6 +89,12 @@ public class GrapheListe implements Graphe {
         }
     }
 
+    /**
+     * méthode qui permet de créer un chemin aléatoire dans un graphe
+     * @param taille
+     * @param depart
+     * @param arrivee
+     */
     private void initRandomChemin(int taille, String depart, String arrivee){
         Random r = new Random();
         int tailleChemin;
@@ -100,7 +129,13 @@ public class GrapheListe implements Graphe {
         ajouterArc(dep, arrivee,r.nextInt(1,100));
     }
 
-
+    /**
+     * méthode qui permet d’ajouter des nœuds et des arcs
+     * à un objet de type GrapheListe
+     * @param depart
+     * @param destination
+     * @param cout
+     */
     public void ajouterArc(String depart, String destination, double cout) {
         boolean existDep = false;
         boolean existArv = false;
@@ -131,11 +166,18 @@ public class GrapheListe implements Graphe {
         }
 
     @Override
+    /**
+     * méthode qui retourne la liste de noeuds
+     */
     public List<String> listeNoeuds() {
         return ensNom;
     }
 
     @Override
+    /**
+     * méthode qui retourne la liste des arcs partant du noeud passé en paramètre.
+     * @return List<Arc>
+     */
     public List<Arc> suivants(String n) {
         Noeud noeud = null;
         for (int i = 0; i < ensNoeuds.size(); i++) {
@@ -149,6 +191,11 @@ public class GrapheListe implements Graphe {
             return null;
         }
     }
+
+    /**
+     * méthode d'affichage du graphe
+     * @return String
+     */
     @Override
     public String toString() {
         String res ="";
@@ -159,6 +206,11 @@ public class GrapheListe implements Graphe {
         return res;
     }
 
+    /**
+     * méthode qui représente le graphe
+     * en respectant le format GraphViz
+     * @return String
+     */
     public String toGraphViz(){
         String res="digraph G {\n";
         for(int i=0;i<ensNoeuds.size();i++){
@@ -171,6 +223,10 @@ public class GrapheListe implements Graphe {
         return res+="}";
     }
 
+    /**
+     * méthode de guetter sur la liste de noeuds
+     * @return List<Noeud>
+     */
     public List<Noeud> getEnsNoeuds() {return ensNoeuds;}
 
 }
