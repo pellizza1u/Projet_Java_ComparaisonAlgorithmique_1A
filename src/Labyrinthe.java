@@ -142,8 +142,10 @@ public class Labyrinthe {
 
     public GrapheListe genererGraphe (){
         GrapheListe res = new GrapheListe();
+        //on parcourt le tableau
         for (int i=0;i<this.murs.length;i++) {
             for (int j = 0; j < this.murs[i].length; j++) {
+                //si on ne se trouve pas sur un mur
                 if (!this.murs[i][j]) {
                     String actualNode = i + "." + j;
                     boolean exist1 = false;
@@ -157,9 +159,11 @@ public class Labyrinthe {
                             break;
                         }
                     }
+                    //si la liste de noeud n'est pas vide
                     if (res.listeNoeuds().size() > 0) {
-
+                        //on parcourt la liste d'arc du noeud à l'index
                         for (int l = 0; l < res.suivants(res.listeNoeuds().get(index)).size(); l++) {
+                            //on regard pour chaque case de côté si il y a déjà un arc qui les relis
                             double dest = Double.parseDouble(res.suivants(res.listeNoeuds().get(index)).get(l).getDest());
                             if (Double.parseDouble(actualNode) - 1 == dest) {
                                 exist1 = true;
@@ -175,6 +179,7 @@ public class Labyrinthe {
                             }
                         }
                     }
+                    //on ajoute l'arc
                     if (i - 1 >= 0 && !this.murs[i - 1][j] && !exist1)
                         res.ajouterArc(actualNode, (i - 1) + "." + j, 1);
                     if (j - 1 >= 0 && !this.murs[i][j - 1] && !exist2)
