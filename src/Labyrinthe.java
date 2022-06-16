@@ -158,6 +158,7 @@ public class Labyrinthe {
                         }
                     }
                     if (res.listeNoeuds().size() > 0) {
+
                         for (int l = 0; l < res.suivants(res.listeNoeuds().get(index)).size(); l++) {
                             double dest = Double.parseDouble(res.suivants(res.listeNoeuds().get(index)).get(l).getDest());
                             if (Double.parseDouble(actualNode) - 1 == dest) {
