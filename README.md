@@ -1,4 +1,3 @@
-# SAE2.02_graphe_pellizza1u_planade2u
-SAE 2.02
+# Projet 1ère année Java
 
-Groupe : Pellizzari Théo et Planade Remi S2E
+Comparaison d'approches algorithmiques entre l'algorithme de dijkstra et l'algorithme de point fixe.
